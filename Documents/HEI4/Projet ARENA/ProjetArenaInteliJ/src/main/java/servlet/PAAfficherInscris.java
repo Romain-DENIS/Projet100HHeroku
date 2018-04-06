@@ -38,7 +38,7 @@ public class PAAfficherInscris extends HttpServlet{
         List<Evenement> evenementList= EvenementLibrary.getInstance().listeEvenement();
         context.setVariable("evenementList",evenementList);
 
-        List<entities.EvUt> evutList=(List<EvUt>) req.getSession().getAttribute("liste");
+        List<entities.EvUt> evutList=(List<entities.EvUt>) req.getSession().getAttribute("liste");
         context.setVariable("evutList",evutList);
 
 
