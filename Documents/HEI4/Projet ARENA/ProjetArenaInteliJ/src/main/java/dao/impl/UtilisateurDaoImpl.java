@@ -105,7 +105,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
     @Override
     public void deleteUtilisateur(String pseudo) {
         //supprimer un utilisateur à l'aide de son pseudo
-        String query ="DELETE FROM ProjetARENA.utilisateur WHERE pseudo=?";
+        String query ="DELETE FROM utilisateur WHERE pseudo=?";
         try {
             Connection connection = DataSourceProvider.getDataSource().getConnection();
             PreparedStatement stmt = connection.prepareStatement(query);

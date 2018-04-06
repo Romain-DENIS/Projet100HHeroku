@@ -61,7 +61,7 @@ public class EvUtDaoImpl implements EvUtDao{
         @Override
         public EvUt addEvUt(EvUt evut){
             //s'inscrire à un evenemùent en tant qu'utilisateur
-            String query ="INSERT INTO projetarena.evut(id,pseudo,paye) VALUES(?,?,?)";
+            String query ="INSERT INTO evut(id,pseudo,paye) VALUES(?,?,?)";
             try {
                 Connection connection = DataSourceProvider.getDataSource().getConnection();
                 PreparedStatement stmt = connection.prepareStatement(query);

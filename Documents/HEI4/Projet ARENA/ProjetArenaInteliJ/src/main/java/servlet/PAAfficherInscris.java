@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -41,8 +41,8 @@ public class PAAfficherInscris extends HttpServlet{
         List<entities.EvUt> evutList=(List<EvUt>) req.getSession().getAttribute("liste");
         context.setVariable("evutList",evutList);
 
-        String identifConnecte = (String) req.getSession().getAttribute("pseudo");
-        PrintWriter out = resp.getWriter();
+
+
 
 //on  renvoie l'utilisateur vers la page html
         templateEngine.process("PAAfficherInscris", context, resp.getWriter());

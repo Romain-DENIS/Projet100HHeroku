@@ -85,7 +85,7 @@ public class CommentaireDaoTestCase {
             // THEN
             try (Connection connection = DataSourceProvider.getDataSource().getConnection();
                  Statement stmt = connection.createStatement()) {
-                try (ResultSet rs = stmt.executeQuery("SELECT * FROM projetarena.commentaire WHERE pseudo = 'pseudo3'")) {
+                try (ResultSet rs = stmt.executeQuery("SELECT * FROM commentaire WHERE pseudo = 'pseudo3'")) {
                     assertThat(rs.next()).isTrue();
                     assertThat(rs.getInt("idevut")).isEqualTo(3);
                     assertThat(rs.getString("pseudo")).isEqualTo("pseudo3");
