@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>R&eacutesultats</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../CSS/Site.css">
+<body>
+
+
+<!-- Header -->
+<header class="arena-display-container arena-content arena-wide" style="max-width:1500px;" id="home">
+    <img class="arena-image" src="../images/Resultat.jpg" alt="fondecran" width="100%" height="auto">
+    <div class="arena-display-middle arena-margin-top arena-center">
+        <h1 class="arena-xxlarge arena-text-white"><span class="arena-hide-small arena-text-light-grey shadow"><b>RESULTATS</b></h1>
+    </div>
+</header>
+
+<!-- Page content -->
+<!-- Results Section -->
+<div class="arena-container arena-padding-32" id="resultats">
+    <h3 class="arena-border-bottom arena-border-light-grey arena-padding-16">R&eacutesultats</h3>
+</div>
+
+<div class="arena-row-padding" >
+    <div class="arena-col l3 m6 arena-margin-bottom" th:each="evenement : ${evenementList}">
+        <div class="arena-display-container">
+
+            <div class=" arena-black arena-padding" th:text="${evenement.nomE}"></div>
+            <div class=" arena-black arena-padding" th:text="${evenement.descri}"></div>
+            <div class=" arena-black arena-padding" th:text="${evenement.date}"></div>
+            <div class=" arena-black arena-padding" th:text="${evenement.payant}"></div>
+            <div class=" arena-black arena-padding" th:text="${evenement.interhei}"></div>
+
+            <div class="arena-col l3 m6 arena-margin-bottom" th:each="commentaire : ${commentaireList}">
+                <div class=" arena-black arena-padding" th:text="${commentaire.pseudo}"></div>
+                <div class=" arena-black arena-padding" th:text="${commentaire.commentaire}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

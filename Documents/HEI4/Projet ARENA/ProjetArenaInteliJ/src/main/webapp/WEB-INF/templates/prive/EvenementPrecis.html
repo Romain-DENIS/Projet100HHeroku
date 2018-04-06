@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>Ev&egravenements</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../CSS/Site.css">
+<body>
+
+
+<!-- Header -->
+<header class="arena-display-container arena-content arena-wide" style="max-width:1500px;" id="home">
+    <!--<img class="arena-image" src="../images/Evenement.jpg" alt="fondecran" width="100%" height="auto">-->
+    <div class="arena-display-middle arena-margin-top arena-center">
+        <h1 class="arena-xxlarge arena-text-white"><span class="arena-hide-small arena-text-light-grey shadow"><b>EVENEMENTS</b></span></h1>
+    </div>
+</header>
+
+<!-- Page content -->
+<!-- Events Section -->
+<div class="arena-container arena-padding-32" id="evenements" th:each="evenement : ${evenementList}">
+    <h3 class="arena-border-bottom arena-border-light-grey arena-padding-16" th:text="${evenement.nomE}"></h3>
+</div>
+
+</body>
+</html>
+
