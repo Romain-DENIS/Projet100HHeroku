@@ -6,8 +6,8 @@ public class Commentaire {
     private String pseudo;
     private String commentaire;
 
-    public Commentaire(int id, String pseudo, String commentaire) {
-        this.idevut=id;
+    public Commentaire(int idevut, String pseudo, String commentaire) {
+        this.idevut=idevut;
         this.pseudo = pseudo;
         this.commentaire = commentaire;
     }
@@ -16,8 +16,8 @@ public class Commentaire {
         return idevut;
     }
 
-    public void setId(int id) {
-        this.idevut = id;
+    public void setId(int idevut) {
+        this.idevut = idevut;
     }
 
     public String getPseudo() {

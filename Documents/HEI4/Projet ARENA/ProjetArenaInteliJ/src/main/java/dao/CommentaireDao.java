@@ -8,11 +8,11 @@ public interface CommentaireDao {
 
     public List<Commentaire> listeCommentaires();
 
-    public Commentaire getCommentaire(String pseudo, int id);
+    public Commentaire getCommentaire(String pseudo, int idevut);
 
 
     public Commentaire addCommentaire(Commentaire commentaire);
 
 
-    public void deleteCommentaire(String pseudo, int id);
+    public void deleteCommentaire(String pseudo, int idevut);
 }

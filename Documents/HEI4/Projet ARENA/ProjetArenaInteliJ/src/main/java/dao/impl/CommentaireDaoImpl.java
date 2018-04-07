@@ -30,7 +30,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
     }
 
     @Override
-    public void deleteCommentaire(String pseudo, int id) {
+    public void deleteCommentaire(String pseudo, int idevut) {
         //supprimer un commentaire
         String query = "DELETE FROM commentaire WHERE pseudo=? AND idevut=?";
         try {
@@ -38,7 +38,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
             PreparedStatement stmt = connection.prepareStatement(query);
 
             stmt.setString(1, pseudo);
-            stmt.setInt(2, id);
+            stmt.setInt(2, idevut);
             stmt.executeUpdate();
 
 
@@ -48,13 +48,13 @@ public class CommentaireDaoImpl implements CommentaireDao {
     }
 
     @Override
-    public Commentaire getCommentaire(String pseudo, int id) {
+    public Commentaire getCommentaire(String pseudo, int idevut) {
         //obtenir un commentaire à l'aide d'un pseudo et de l'id de l'evenement
         String query = "SELECT * FROM commentaire WHERE pseudo=? AND idevut=?";
         try (Connection connection = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, pseudo);
-            statement.setInt(2, id);
+            statement.setInt(2, idevut);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     return new Commentaire(resultSet.getInt("idevut"),resultSet.getString("pseudo"), resultSet.getString("commentaire"));
