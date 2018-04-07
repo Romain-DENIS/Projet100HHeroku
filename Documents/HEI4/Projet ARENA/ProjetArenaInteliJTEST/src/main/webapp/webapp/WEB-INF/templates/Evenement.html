@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>Ev&egravenements</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../CSS/Site.css">
+<body>
+
+
+<!-- Header -->
+<header class="arena-display-container arena-content arena-wide" style="max-width:1500px;" id="home">
+  <img class="arena-image" src="../images/Evenement.jpg" alt="fondecran" width="100%" height="auto">
+  <div class="arena-display-middle arena-margin-top arena-center">
+    <h1 class="arena-xxlarge arena-text-white"><span class="arena-hide-small arena-text-light-grey shadow"><b>EVENEMENTS</b></h1>
+  </div>
+</header>
+
+<!-- Page content -->
+<!-- Events Section -->
+<div class="arena-container arena-padding-32" id="evenements">
+  <h3 class="arena-border-bottom arena-border-light-grey arena-padding-16">Evenements</h3>
+  <a href="prive/CommentE" class="arena-left arena-bar-item arena-button arena-padding-24">Commenter un &eacutev&egravenement</a>
+<a href="prive/InscriE" class="arena-right arena-bar-item arena-button arena-padding-24">S'inscrire &agrave un &eacutev&egravenement</a>
+
+</div>
+
+<div class="arena-row-padding" >
+  <div class="arena-col l3 m6 arena-margin-bottom" th:each="evenement : ${evenementList}">
+    <div class="arena-display-container">
+
+      <a class=" arena-black arena-padding" th:text="${evenement.nomE}" href="RedirectionJavascript()"/>
+      <div class=" arena-black arena-padding" th:text="${evenement.descri}"></div>
+      <div class=" arena-black arena-padding" th:text="${evenement.date}"></div>
+      <div class=" arena-black arena-padding" th:text="${evenement.payant}"></div>
+      <div class=" arena-black arena-padding" th:text="${evenement.interhei}"></div>
+
+      <div class="arena-col l3 m6 arena-margin-bottom" th:each="commentaire : ${commentaireList}" th:if="${commentaire.id == evenement.id}">
+        <div class=" arena-black arena-padding" th:text="${commentaire.id}"></div>
+        <div class=" arena-black arena-padding" th:text="${commentaire.pseudo}"></div>
+        <div class=" arena-black arena-padding" th:text="${commentaire.commentaire}"></div>
+
+      </div>
+    </div>
+</div>
+
+</div>
+
+<script>
+    function RedirectionJavascript(){
+        var userName = "Shekhar Shete";
+        '<%Session["nomE"] = "' +  + '"; %>';
+        alert('<%=Session["UserName"] %>');
+        document.location.href="Accueil";
+    }
+</script>
+
+</body>
+</html>
+
+
+

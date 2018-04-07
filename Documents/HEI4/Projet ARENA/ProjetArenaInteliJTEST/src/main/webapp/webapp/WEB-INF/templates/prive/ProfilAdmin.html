@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<title>ProfilAdmin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../CSS/Site.css">
+<body>
+
+<!-- Navbar -->
+<div class="arena-top">
+    <div class="arena-bar arena-white arena-wide arena-padding arena-card">
+        <a href="Accueil" class="arena-bar-item arena-button" ><b>ARENA</b> HEI</a>
+        <!-- Float links to the right. Hide them on small screens -->
+        <div class="arena-right arena-hide-small">
+            <a href="Evenement" class="arena-bar-item arena-button">Evènements</a>
+            <a href="Resultat" class="arena-bar-item arena-button">Résultats</a>
+            <a href="Contact" class="arena-bar-item arena-button">Contact</a>
+            <a href="ProfilAdmin" class="arena-bar-item arena-button active">Profil Admin</a>
+        </div>
+    </div>
+</div>
+<!-- Header -->
+<header class="arena-display-container arena-content arena-wide" style="max-width:1500px;" id="home">
+    <img class="arena-image" src="../images/ProfilAdmin.jpg" alt="fondecran" width="100%" height="auto">
+    <div class="arena-display-middle arena-margin-top arena-center">
+        <h1 class="arena-xxlarge arena-text-white"><span class="arena-hide-small arena-text-light-grey"><b><span class="arena-text-white shadow">ADMINISTRATEUR</span></b></span></h1>
+    </div>
+</header>
+
+<!-- Page content -->
+
+
+<div class="arena-container arena-padding-32" id="presentation">
+    <a href="Deconnexion" class="arena-right arena-bar-item arena-button arena-padding-24">Se déconnecter</a>
+    <h3 class="arena-border-bottom arena-border-light-grey arena-padding-16">Profil Admin</h3>
+
+
+    <div class="arena-container arena-padding-32">
+        <h4 class="arena-padding-24 arena-border-light-grey arena-border-bottom">Supprimer un utilisateur</h4>
+
+        <form method="post">
+            <label><div class="arena-padding-16"></div><input type="text" name="pseudo"/></label>
+
+            <input type="submit" value="Supprimer"/>
+        </form>
+    </div>
+</div>
+<div class="arena-container arena-padding-32">
+    <h4 class="arena-padding-24  arena-border-light-grey arena-border-bottom">Ajouter un évènement</h4>
+    <div class="arena-container">
+        <form method="post">
+            <label><div class="arena-padding-16">Nom de l'évènement: </div><input type="text" name="nomEvenement" required/></label>
+            <label><div class="arena-padding-16">Description: </div><textarea name="descriptionEvenement" placeholder="Description de l'évènement..." required/></textarea></label>
+            <label><div class="arena-padding-16">Date: </div><input type="date" name="dateEvenement" required/></label>
+            <label><div class="arena-padding-16">Plateforme: </div><input type="text" name="plateformeEvenement" required/></label>
+            <label><div class="arena-padding-16">Evènement inter-HEI: <input type="checkbox" name="InterHei" required/></div></label>
+            <label><div class="arena-padding-16">Payant: <input type="checkbox" name="Payant" required/></div></label>
+            <input type="submit" value="Ajouter l'évènement"/>
+        </form>
+    </div>
+</div>
+
+<div class="arena-container arena-padding-32">
+    <h4 class="arena-padding-24  arena-border-light-grey arena-border-bottom">Supprimer un évènement</h4>
+    <label><div class="arena-padding-16">Date: </div><input type="date" name="dateEvenement" required/></label>
+    <label><div class="arena-padding-16">Nom de l'évènement: </div><SELECT name="nom_epi">
+        <option></option>
+    </SELECT>
+</div>
+
+
+</body>
+</html>
