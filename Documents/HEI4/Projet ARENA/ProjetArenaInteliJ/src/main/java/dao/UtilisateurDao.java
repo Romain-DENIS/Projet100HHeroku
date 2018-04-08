@@ -8,6 +8,8 @@ public interface UtilisateurDao {
 
     public List<Utilisateur> listeUtilisateur();
 
+    public List<Utilisateur> listeUtilisateurPlateforme(String Plat);
+
     public Utilisateur getUtilisateur(String pseudo);
 
     public String getMotDePasse(String mot_de_passe);

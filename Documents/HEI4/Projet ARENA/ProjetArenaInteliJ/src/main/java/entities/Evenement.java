@@ -4,13 +4,13 @@ import java.time.LocalDate;
 
 public class Evenement {
 
-    private int id;
+    private static int id;
     private String nomE;
     private String descri;
     private LocalDate dateE;
     private String plateforme;
     private boolean interhei;
-    private boolean payant;
+    private int payant;
 
     public int getId() {
         return id;
@@ -60,15 +60,15 @@ public class Evenement {
         this.interhei = interhei;
     }
 
-    public boolean isPayant() {
+    public int isPayant() {
         return payant;
     }
 
-    public void setPayant(boolean payant) {
+    public void setPayant(int payant) {
         this.payant = payant;
     }
 
-    public Evenement( String nomE, String descri, LocalDate dateE, String plateforme, boolean interhei, boolean payant) {
+    public Evenement( String nomE, String descri, LocalDate dateE, String plateforme, boolean interhei, int payant) {
 
         this.nomE = nomE;
         this.descri = descri;

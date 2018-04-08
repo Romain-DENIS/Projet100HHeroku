@@ -7,6 +7,8 @@ public interface EvUtDao {
 
     public List<EvUt> listeEvUt(int id);
 
+    public Integer listeEvUtPrix(int id);
+
     public EvUt getEvUt(String pseudo, int id);
 
  //   public String getId(String nomE, LocalDate dateE);

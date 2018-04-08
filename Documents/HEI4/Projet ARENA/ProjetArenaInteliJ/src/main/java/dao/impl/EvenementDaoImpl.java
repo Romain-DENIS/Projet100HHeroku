@@ -21,7 +21,7 @@ public class EvenementDaoImpl implements EvenementDao {
                 ResultSet resultSet=statement.executeQuery(query)
         ){
             while(resultSet.next()) {
-                listOfEvenement.add(new Evenement(resultSet.getString("nomE"), resultSet.getString("descri"), resultSet.getDate("dateE").toLocalDate(), resultSet.getString("plateforme"),resultSet.getBoolean("interhei"),resultSet.getBoolean("payant")));
+                listOfEvenement.add(new Evenement(resultSet.getString("nomE"), resultSet.getString("descri"), resultSet.getDate("dateE").toLocalDate(), resultSet.getString("plateforme"),resultSet.getBoolean("interhei"),resultSet.getInt("payant")));
 
             }
         } catch(SQLException e){
@@ -41,7 +41,7 @@ public class EvenementDaoImpl implements EvenementDao {
             statement.setString(1, nomE);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    return new Evenement(resultSet.getString("nomE"), resultSet.getString("descri"), resultSet.getDate("dateE").toLocalDate(), resultSet.getString("plateforme"),resultSet.getBoolean("interhei"),resultSet.getBoolean("payant"));
+                    return new Evenement(resultSet.getString("nomE"), resultSet.getString("descri"), resultSet.getDate("dateE").toLocalDate(), resultSet.getString("plateforme"),resultSet.getBoolean("interhei"),resultSet.getInt("payant"));
                 }
             }
         } catch (SQLException e) {
@@ -94,7 +94,7 @@ public class EvenementDaoImpl implements EvenementDao {
             stmt.setDate(3, Date.valueOf(evenement.getDate()));
             stmt.setString(4,evenement.getPlateforme());
             stmt.setBoolean(5,evenement.isInterhei());
-            stmt.setBoolean(6,evenement.isPayant());
+            stmt.setInt(6,evenement.isPayant());
             stmt.executeUpdate();
             return evenement;
 

@@ -29,7 +29,25 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
         return listOfUtilisateur;
     }
 
-
+    @Override
+    public List<Utilisateur> listeUtilisateurPlateforme(String Plat){
+        //lister les utilisateur par leur pseudo
+        String query="SELECT * FROM (utilisateur INNER JOIN (evut INNER JOIN evenement on evut.id=evenement.id) on evut.pseudo=utilisateur.pseudo ) WHERE evenement.plateforme=?";
+        List<Utilisateur> listOfUtilisateurP= new ArrayList<>();
+        try(
+                Connection connection=DataSourceProvider.getDataSource().getConnection();
+                PreparedStatement statement = connection.prepareStatement(query)) {
+                statement.setString(1, Plat);
+                try(ResultSet resultSet = statement.executeQuery()) {
+                    while(resultSet.next()) {
+                        listOfUtilisateurP.add(new Utilisateur(resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getString("pseudo"), resultSet.getString("mot_de_passe"), resultSet.getString("email"), resultSet.getString("classe"),resultSet.getBoolean("notif")));
+                        }
+                }
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return listOfUtilisateurP;
+    }
 
     @Override
     public Utilisateur getUtilisateur(String pseudo){

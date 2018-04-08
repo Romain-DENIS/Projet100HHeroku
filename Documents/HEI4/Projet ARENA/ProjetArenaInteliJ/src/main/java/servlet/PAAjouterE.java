@@ -70,7 +70,7 @@ public class PAAjouterE extends HttpServlet{
             out.println("                <label><div class=\"arena-padding-16\">Date: </div><input type=\"date\" name=\"dateE\" required/></label>");
             out.println("                <label><div class=\"arena-padding-16\">Plateforme: </div><input type=\"text\" name=\"plateforme\" required/></label>");
             out.println("                <label><div class=\"arena-padding-16\">Evènement inter-HEI: <input type=\"checkbox\" value=\"true\" name=\"interhei\"/></div></label>");
-            out.println("                <label><div class=\"arena-padding-16\">Payant: <input type=\"checkbox\" value=\"true\" name=\"payant\"/></div></label>");
+            out.println("                <label><div class=\"arena-padding-16\">Payant: <input type=\"text\" name=\"payant\"/></div></label>");
             out.println("                <input type=\"submit\" value=\"Ajouter l'évènement\"/>");
             out.println("                </form>");
             out.println("    </div>");
@@ -96,7 +96,7 @@ public class PAAjouterE extends HttpServlet{
             LocalDate dateE = LocalDate.parse(releaseDateAsString, dateFormat);
             String plateforme = req.getParameter("plateforme");
             Boolean interhei=Boolean.valueOf(req.getParameter("interhei"));
-            Boolean payant= Boolean.valueOf(req.getParameter("payant"));
+            int payant= Integer.valueOf(req.getParameter("payant"));
 
             entities.Evenement evenement = new Evenement(nomE, descri, dateE, plateforme, interhei, payant);
             try {

@@ -14,27 +14,51 @@ public class EvUtDaoImpl implements EvUtDao{
 
 
         @Override
-        public List<EvUt> listeEvUt(int id){
-            //lister les utilisateurs participants a un evenement en fonction de l'id de l'evenement
-            String query="SELECT * FROM evut WHERE id=?";
-            List<EvUt> listOfEvUt= new ArrayList<>();
-            try(
-                    Connection connection=DataSourceProvider.getDataSource().getConnection();
-                    PreparedStatement statement = connection.prepareStatement(query)) {
+    public List<EvUt> listeEvUt(int id){
+        //lister les utilisateurs participants a un evenement en fonction de l'id de l'evenement
+        String query="SELECT * FROM evut WHERE id=?";
+        List<EvUt> listOfEvUt= new ArrayList<>();
+        try(
+                Connection connection=DataSourceProvider.getDataSource().getConnection();
+                PreparedStatement statement = connection.prepareStatement(query)) {
 
-                    statement.setInt(1, id);
-                    try(ResultSet resultSet=statement.executeQuery())
-                {
-                    while(resultSet.next()) {
+            statement.setInt(1, id);
+            try(ResultSet resultSet=statement.executeQuery())
+            {
+                while(resultSet.next()) {
                     listOfEvUt.add(new EvUt(resultSet.getInt("id"),resultSet.getString("pseudo"),resultSet.getBoolean("paye")));
 
-                    }
                 }
-            } catch(SQLException e){
-                e.printStackTrace();
             }
-            return listOfEvUt;
+        } catch(SQLException e){
+            e.printStackTrace();
         }
+        return listOfEvUt;
+    }
+
+    @Override
+    public Integer listeEvUtPrix(int id){
+        //lister les utilisateurs participants a un evenement en fonction de l'id de l'evenement
+        String query="SELECT evenement.payant FROM (evut INNER JOIN evenement ON evenement.id=evut.id) WHERE evut.id=? AND evut.paye=1";
+        Integer listOfEvUt=0;
+        try(
+                Connection connection=DataSourceProvider.getDataSource().getConnection();
+                PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, id);
+            try(ResultSet resultSet=statement.executeQuery())
+            {
+                while(resultSet.next()) {
+                    listOfEvUt=listOfEvUt+resultSet.getInt("payant");
+
+                }
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return listOfEvUt;
+    }
+
 
 
 

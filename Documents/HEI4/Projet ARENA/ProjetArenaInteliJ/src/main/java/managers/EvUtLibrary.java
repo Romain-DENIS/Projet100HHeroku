@@ -18,6 +18,8 @@ public class EvUtLibrary {
 
         public List<EvUt> listeEvUt(int id){ return evutDao.listeEvUt(id);}
 
+        public Integer listeEvUtPrix(int id){return evutDao.listeEvUtPrix(id);}
+
         private EvUtLibrary(){}
 
         public EvUt getEvUt(String pseudo, int id){return evutDao.getEvUt(pseudo, id);}
@@ -27,6 +29,7 @@ public class EvUtLibrary {
         public EvUt addEvUt(EvUt evut){//evenementDao.addEvenement(evenement);
             return evutDao.addEvUt(evut);
         }
+
         public void deletEvUt(String pseudo, int id){evutDao.deleteEvUt(pseudo,id);
 
         }
