@@ -30,28 +30,30 @@ public class PAAfficherPlateforme extends HttpServlet{
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
         templateResolver.setPrefix("/WEB-INF/templates/prive/");
         templateResolver.setSuffix(".html");
+        String identifConnecte = (String) req.getSession().getAttribute("pseudo");
 
-        WebContext context = new WebContext(req, resp, req.getServletContext());
+        if ("Administateur".equals(identifConnecte)) {
+            WebContext context = new WebContext(req, resp, req.getServletContext());
 
-        TemplateEngine templateEngine = new TemplateEngine();
-        templateEngine.setTemplateResolver(templateResolver);
+            TemplateEngine templateEngine = new TemplateEngine();
+            templateEngine.setTemplateResolver(templateResolver);
 
-        //ces variables seront utilisées pour afficher les evenements et les commentaires à l'aide de thymeleaf
-        List<Evenement> evenementList= EvenementLibrary.getInstance().listeEvenement();
-        context.setVariable("evenementList",evenementList);
+            //ces variables seront utilisées pour afficher les evenements et les commentaires à l'aide de thymeleaf
+            List<Evenement> evenementList = EvenementLibrary.getInstance().listeEvenement();
+            context.setVariable("evenementList", evenementList);
 
-        List<entities.Utilisateur> UtilList=(List<entities.Utilisateur>) req.getSession().getAttribute("listeU");
-        context.setVariable("UtilList",UtilList);
-
-
+            List<entities.Utilisateur> UtilList = (List<entities.Utilisateur>) req.getSession().getAttribute("listeU");
+            context.setVariable("UtilList", UtilList);
 
 
 //on  renvoie l'utilisateur vers la page html
-        templateEngine.process("PAAfficherPlateforme", context, resp.getWriter());
+            templateEngine.process("PAAfficherPlateforme", context, resp.getWriter());
 
 
+        } else {
+            resp.sendRedirect("/Profil");
+        }
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

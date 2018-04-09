@@ -26,24 +26,29 @@ public class PASupprimerE extends HttpServlet {
             ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
             templateResolver.setPrefix("/WEB-INF/templates/prive/");
             templateResolver.setSuffix(".html");
-
-            WebContext context = new WebContext(req, resp, req.getServletContext());
-
-            TemplateEngine templateEngine = new TemplateEngine();
-            templateEngine.setTemplateResolver(templateResolver);
-
-
-            //ces variables seront utilisées pour afficher les evenements à l'aide de thymeleaf
-            List<Evenement> evenementList=EvenementLibrary.getInstance().listeEvenement();
-            context.setVariable("evenementList",evenementList);
-
             String identifConnecte = (String) req.getSession().getAttribute("pseudo");
-            PrintWriter out = resp.getWriter();
+
+            if ("Administateur".equals(identifConnecte)) {
+                WebContext context = new WebContext(req, resp, req.getServletContext());
+
+                TemplateEngine templateEngine = new TemplateEngine();
+                templateEngine.setTemplateResolver(templateResolver);
+
+
+                //ces variables seront utilisées pour afficher les evenements à l'aide de thymeleaf
+                List<Evenement> evenementList = EvenementLibrary.getInstance().listeEvenement();
+                context.setVariable("evenementList", evenementList);
+
+
+                PrintWriter out = resp.getWriter();
 
 //on  renvoie l'utilisateur vers la page html
-            templateEngine.process("PASupprimerE", context, resp.getWriter());
+                templateEngine.process("PASupprimerE", context, resp.getWriter());
 
 
+            } else {
+                resp.sendRedirect("/Profil");
+            }
         }
 
 
