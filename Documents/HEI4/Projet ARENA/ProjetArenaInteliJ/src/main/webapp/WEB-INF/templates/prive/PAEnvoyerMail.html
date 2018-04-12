@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../CSS/Site.css">
 <body>
-
 <!-- Navbar -->
 <div class="arena-top">
     <div class="arena-bar arena-white arena-wide arena-padding arena-card">
@@ -27,40 +26,21 @@
     </div>
 </header>
 
-<!-- Page content -->
-
 
 <div class="arena-container arena-padding-32" id="presentation">
     <a href="ProfilAdmin" class="arena-right arena-bar-item arena-button arena-padding-24">Retour</a>
     <h3 class="arena-border-bottom arena-border-light-grey arena-padding-16">Profil Admin</h3>
+    <div class="arena-container arena-padding-32">
+        <h4 class="arena-padding-24 arena-border-light-grey arena-border-bottom">La liste des inscrits:</h4>
 
-</div>
+        <div class="arena-container arena-padding-32">
 
-<div class="arena-container arena-padding-32">
-    <h4 class="arena-padding-24  arena-border-light-grey arena-border-bottom">S&eacutel&eacutectionner un &eacutev&egravenement</h4>
-    <form method="post">
-        <label><div class="arena-padding-16">Date: </div><input type="date" name="dateEvenement" required/></label>
-        <label><div class="arena-padding-16">Nom de l'&eacutev&egravenement: </div></label>
-        <SELECT name="nom_eve">
-            <option>Selection de l'evenement</option>
-            <option name="option" th:each="evenement : ${evenementList}"
-                    th:text="${evenement.nomE}" th:value="${evenement.nomE}"></option>
-        </SELECT></br>
-        <div class="arena-padding-16">
-            <input type="submit" value="Confirmer"/>
-        </div>
-    </form>
-</div>
 
-<div class="arena-row-padding" >
-    <div class="arena-col l3 m6 arena-margin-bottom" th:each="evut : ${evutList}">
-        <div class="arena-display-container">
-
-            <div class=" arena-black arena-padding" th:text="${evut.pseudo}" th:value="${evut.pseudo}"></div>
-            <input type="checkbox" th:text="${evut.paye}"/>
+            <span name="option" th:each="utilisateur : ${utilList}">
+                <span th:if="${utilisateur.pseudo!='Administrateur'}" th:text="${utilisateur.email+';'}" th:value="${utilisateur.email}"></span>
+            </span>
         </div>
     </div>
 </div>
-<div class="arena-padding-64"></div>
 </body>
 </html>

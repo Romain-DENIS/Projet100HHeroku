@@ -1,0 +1,47 @@
+        <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>ProfilAdmin</title>
+<meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="../CSS/Site.css">
+                <body>
+<!-- Navbar -->
+<div class="arena-top">
+               <div class="arena-bar arena-white arena-wide arena-padding arena-card">
+               <a href="Accueil" class="arena-bar-item arena-button" ><b>ARENA</b> HEI</a>
+               <!-- Float links to the right. Hide them on small screens -->
+       <div class="arena-right arena-hide-small">
+               <a href="Evenement" class="arena-bar-item arena-button">Ev&egravenements</a>
+               <a href="Resultat" class="arena-bar-item arena-button">R&eacutesultats</a>
+               <a href="Contact" class="arena-bar-item arena-button">Contact</a>
+               <a href="ProfilAdmin" class="arena-bar-item arena-button active">Profil Admin</a>
+               </div>
+    </div>
+</div>
+<!-- Header -->
+<header class="arena-display-container arena-content arena-wide" style="max-width:1500px;" id="home">
+                <img class="arena-image" src="../images/ProfilAdmin.jpg" alt="fondecran" width="100%" height="auto">
+                <div class="arena-display-middle arena-margin-top arena-center">
+                <h1 class="arena-xxlarge arena-text-white"><span class="arena-hide-small arena-text-light-grey"><b><span class="arena-text-white shadow">ADMINISTRATEUR</span></b></span></h1>
+                </div>
+</header>
+
+
+<div class="arena-container arena-padding-32" id="presentation">
+                <a href="ProfilAdmin" class="arena-right arena-bar-item arena-button arena-padding-24">Retour</a>
+        <h3 class="arena-border-bottom arena-border-light-grey arena-padding-16">Profil Admin</h3>
+        <div class="arena-container arena-padding-32">
+        <h4 class="arena-padding-24 arena-border-light-grey arena-border-bottom">Supprimer un utilisateur</h4>
+        <form method="post">
+            <SELECT name="pseudo">
+                <option>Selection de l'utilisateur</option>
+                <option name="option" th:each="utilisateur : ${utilList}" th:if="${utilisateur.pseudo!='Administrateur'}"
+                        th:text="${utilisateur.pseudo}" th:value="${utilisateur.pseudo}"></option>
+            </SELECT></br>
+            </br>
+            <input type="submit" value="Supprimer"/>
+            </form>
+    </div>
+</div>
+</body>
+</html>

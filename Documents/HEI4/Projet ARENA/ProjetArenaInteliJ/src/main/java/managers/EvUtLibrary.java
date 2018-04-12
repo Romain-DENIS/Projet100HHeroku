@@ -3,6 +3,7 @@ package managers;
 import dao.EvUtDao;
 import dao.impl.EvUtDaoImpl;
 import entities.EvUt;
+import entities.Utilisateur;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class EvUtLibrary {
 
         public EvUt getEvUt(String pseudo, int id){return evutDao.getEvUt(pseudo, id);}
 
-
+        public List<Utilisateur> listeEvutMail(int id){return evutDao.listeEvUtMail(id);}
 
         public EvUt addEvUt(EvUt evut){//evenementDao.addEvenement(evenement);
             return evutDao.addEvUt(evut);

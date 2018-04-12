@@ -1,6 +1,8 @@
 package dao;
 
 import entities.EvUt;
+import entities.Utilisateur;
+
 import java.util.List;
 
 public interface EvUtDao {
@@ -17,4 +19,6 @@ public interface EvUtDao {
 
 
     public void deleteEvUt(String pseudo, int id);
+
+    public List<Utilisateur> listeEvUtMail(int id);
 }

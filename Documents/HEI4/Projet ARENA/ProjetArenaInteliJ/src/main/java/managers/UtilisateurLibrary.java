@@ -18,6 +18,8 @@ public class UtilisateurLibrary {
 
     private UtilisateurLibrary(){}
 
+    public List<Utilisateur> listeUtilisateur(){return utilisateurDao.listeUtilisateur();}
+
     public List<Utilisateur> listeUtilisateurPlateforme(String Plat){return utilisateurDao.listeUtilisateurPlateforme(Plat);}
 
     public Utilisateur getUtilisateur(String pseudo){return utilisateurDao.getUtilisateur(pseudo);}
@@ -32,7 +34,6 @@ public class UtilisateurLibrary {
         return utilisateurDao.getMotDePasse(pseudo);
 
     }
-
 
     public Utilisateur addUtilisateur(Utilisateur utilisateur){//utilisateurDao.addUtilisateur(utilisateur);
         return utilisateurDao.addUtilisateur(utilisateur);

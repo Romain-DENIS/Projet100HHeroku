@@ -4,6 +4,7 @@ import dao.EvUtDao;
 import dao.EvenementDao;
 import entities.EvUt;
 import entities.Evenement;
+import entities.Utilisateur;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -34,6 +35,26 @@ public class EvUtDaoImpl implements EvUtDao{
             e.printStackTrace();
         }
         return listOfEvUt;
+    }
+
+    @Override
+    public List<Utilisateur> listeEvUtMail(int id){
+        //lister les utilisateurs participants a un evenement en fonction de l'id de l'evenement
+        String query="SELECT * FROM (utilisateur INNER JOIN evut ON utilisateur.pseudo=evut.pseudo) WHERE evut.id=?";
+        List<Utilisateur> listOfUtilisateurP= new ArrayList<>();
+        try(
+                Connection connection=DataSourceProvider.getDataSource().getConnection();
+                PreparedStatement statement = connection.prepareStatement(query)) {
+                statement.setInt(1, id);
+            try(ResultSet resultSet = statement.executeQuery()) {
+                while(resultSet.next()) {
+                    listOfUtilisateurP.add(new Utilisateur(resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getString("pseudo"), resultSet.getString("mot_de_passe"), resultSet.getString("email"), resultSet.getString("classe"),resultSet.getBoolean("notif")));
+                }
+            }
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return listOfUtilisateurP;
     }
 
     @Override

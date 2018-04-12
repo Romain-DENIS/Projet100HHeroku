@@ -10,7 +10,7 @@ public interface EvenementDao {
 
     public List<Evenement> listeEvenement();
 
-    public Evenement getEvenement(String nomE);
+    public Evenement getEvenement(String id);
 
     public String getId(String nomE, LocalDate dateE);
 

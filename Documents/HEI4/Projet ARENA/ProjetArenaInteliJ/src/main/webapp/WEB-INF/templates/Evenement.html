@@ -31,7 +31,8 @@
 
 <div class="arena-row-padding" >
   <div class="arena-col l3 m6 arena-margin-bottom" th:each="evenement : ${evenementList}">
-    <div class="arena-display-container" th:if="${evenement.interhei == 1}">
+    <span th:if="${evenement.interhei == 1}">
+    <div class="arena-display-container">
 
       <a class=" arena-black arena-padding" th:text="${evenement.nomE}" th:value="${evenement.id}" onclick="RedirectionJavascript()"/>
       <div class=" arena-black arena-padding" th:text="${evenement.descri}"></div>
@@ -48,6 +49,7 @@
         </div>
       </div>
     </div>
+    </span>
 </div>
 
 </div>

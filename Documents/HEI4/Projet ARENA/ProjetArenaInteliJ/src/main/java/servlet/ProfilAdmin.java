@@ -18,7 +18,7 @@ public class ProfilAdmin extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String identifConnecte = (String) req.getSession().getAttribute("pseudo");
 
-        if ("Administateur".equals(identifConnecte)) {
+        /*if ("Administateur".equals(identifConnecte)) {*/
             PrintWriter out = resp.getWriter();
             out.println("        <!DOCTYPE html>");
             out.println("<html>");
@@ -58,6 +58,12 @@ public class ProfilAdmin extends HttpServlet {
             out.println("");
             out.println("");
             out.println("                <div class=\"arena-container arena-center arena-padding-32\">");
+            out.println("                <a href=\"PAEnvoyerMail\" class=\" arena-border arena-button arena-padding-24\">Obtenir les adresses mails des utilisateurs</a>");
+            out.println("</div>");
+        out.println("                <div class=\"arena-container arena-center arena-padding-32\">");
+        out.println("                <a href=\"PAEnvoyerMailEve\" class=\" arena-border arena-button arena-padding-24\">Obtenir les adresses mails des utilisateurs pour un évènement</a>");
+        out.println("</div>");
+            out.println("                <div class=\"arena-container arena-center arena-padding-32\">");
             out.println("                <a href=\"PASupprimerU\" class=\" arena-border arena-button arena-padding-24\">Supprimer un utilisateur</a>");
             out.println("</div>");
             out.println("                <div class=\"arena-container arena-center arena-padding-32\">");
@@ -85,11 +91,9 @@ public class ProfilAdmin extends HttpServlet {
             out.println("</html>");
 
 
-        }else{
+        /*}else{
             resp.sendRedirect("/Profil");
-        }
-
-
+        }*/
     }
 
 }

@@ -15,5 +15,7 @@ public class CommentaireLibrary {
     private CommentaireDao commentaireDao = new CommentaireDaoImpl();
     private CommentaireLibrary(){};
     public Commentaire addCommentaire(Commentaire commentaire){return commentaireDao.addCommentaire(commentaire);}
+    public Commentaire getCommentaire(String pseudo, int idevut){return commentaireDao.getCommentaire(pseudo, idevut);}
     public List<Commentaire> listeCommentaire(){ return commentaireDao.listeCommentaires();}
+    public void deleteCommentaire(String pseudo, int idevut){commentaireDao.deleteCommentaire(pseudo, idevut);}
 }

@@ -1,0 +1,64 @@
+package servlet;
+
+
+import entities.Utilisateur;
+import managers.UtilisateurLibrary;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.WebContext;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+
+@WebServlet("/PAEnvoyerMail")
+public class PAEnvoyerMail extends HttpServlet{
+
+
+
+
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
+        templateResolver.setPrefix("/WEB-INF/templates/prive/");
+        templateResolver.setSuffix(".html");
+        String identifConnecte = (String) req.getSession().getAttribute("pseudo");
+
+        /*if ("Administateur".equals(identifConnecte)) {*/
+            WebContext context = new WebContext(req, resp, req.getServletContext());
+
+            TemplateEngine templateEngine = new TemplateEngine();
+            templateEngine.setTemplateResolver(templateResolver);
+
+
+            //ces variables seront utilisées pour afficher les evenements à l'aide de thymeleaf
+            List<Utilisateur> utilList = UtilisateurLibrary.getInstance().listeUtilisateur();
+            context.setVariable("utilList", utilList);
+
+
+            PrintWriter out = resp.getWriter();
+
+//on  renvoie l'utilisateur vers la page html
+            templateEngine.process("PAEnvoyerMail", context, resp.getWriter());
+
+        /*} else {
+            resp.sendRedirect("/Profil");
+        }*/
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    }
+}
+
+
+
+

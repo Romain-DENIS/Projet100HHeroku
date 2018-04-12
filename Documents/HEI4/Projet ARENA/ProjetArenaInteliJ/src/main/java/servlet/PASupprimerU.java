@@ -1,7 +1,11 @@
 package servlet;
 
 
+import entities.Utilisateur;
 import managers.UtilisateurLibrary;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.WebContext;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 
 @WebServlet("/PASupprimerU")
@@ -21,66 +26,33 @@ public class PASupprimerU extends HttpServlet{
 
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
+            templateResolver.setPrefix("/WEB-INF/templates/prive/");
+            templateResolver.setSuffix(".html");
             String identifConnecte = (String) req.getSession().getAttribute("pseudo");
 
-            if ("Administateur".equals(identifConnecte)) {
+           /* if ("Administateur".equals(identifConnecte)) {*/
+                WebContext context = new WebContext(req, resp, req.getServletContext());
+
+                TemplateEngine templateEngine = new TemplateEngine();
+                templateEngine.setTemplateResolver(templateResolver);
+
+
+                //ces variables seront utilisées pour afficher les evenements à l'aide de thymeleaf
+                List<Utilisateur> utilList = UtilisateurLibrary.getInstance().listeUtilisateur();
+                context.setVariable("utilList", utilList);
+
+
                 PrintWriter out = resp.getWriter();
-                out.println("        <!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<title>ProfilAdmin</title>");
-                out.println("<meta charset=\"UTF-8\">");
-                out.println("                <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
-                out.println("                <link rel=\"stylesheet\" href=\"../CSS/Site.css\">");
-                out.println("                <body>");
-                out.println("");
-                out.println("<!-- Navbar -->");
-                out.println("<div class=\"arena-top\">");
-                out.println("                <div class=\"arena-bar arena-white arena-wide arena-padding arena-card\">");
-                out.println("                <a href=\"Accueil\" class=\"arena-bar-item arena-button\" ><b>ARENA</b> HEI</a>");
-                out.println("                <!-- Float links to the right. Hide them on small screens -->");
-                out.println("        <div class=\"arena-right arena-hide-small\">");
-                out.println("                <a href=\"Evenement\" class=\"arena-bar-item arena-button\">Evènements</a>");
-                out.println("                <a href=\"Resultat\" class=\"arena-bar-item arena-button\">Résultats</a>");
-                out.println("                <a href=\"Contact\" class=\"arena-bar-item arena-button\">Contact</a>");
-                out.println("                <a href=\"ProfilAdmin\" class=\"arena-bar-item arena-button active\">Profil Admin</a>");
-                out.println("                </div>");
-                out.println("    </div>");
-                out.println("</div>");
-                out.println("<!-- Header -->");
-                out.println("<header class=\"arena-display-container arena-content arena-wide\" style=\"max-width:1500px;\" id=\"home\">");
-                out.println("                <img class=\"arena-image\" src=\"../images/ProfilAdmin.jpg\" alt=\"fondecran\" width=\"100%\" height=\"auto\">");
-                out.println("                <div class=\"arena-display-middle arena-margin-top arena-center\">");
-                out.println("                <h1 class=\"arena-xxlarge arena-text-white\"><span class=\"arena-hide-small arena-text-light-grey\"><b><span class=\"arena-text-white shadow\">ADMINISTRATEUR</span></b></span></h1>");
-                out.println("                </div>");
-                out.println("</header>");
-                out.println("");
-                out.println("<!-- Page content -->");
-                out.println("");
-                out.println("");
-                out.println("<div class=\"arena-container arena-padding-32\" id=\"presentation\">");
-                out.println("                <a href=\"ProfilAdmin\" class=\"arena-right arena-bar-item arena-button arena-padding-24\">Retour</a>");
-                out.println("                <h3 class=\"arena-border-bottom arena-border-light-grey arena-padding-16\">Profil Admin</h3>");
-                out.println("");
-                out.println("");
-                out.println("                <div class=\"arena-container arena-padding-32\">");
-                out.println("                <h4 class=\"arena-padding-24 arena-border-light-grey arena-border-bottom\">Supprimer un utilisateur</h4>");
-                out.println("");
-                out.println("                <form method=\"post\">");
-                out.println("                <label><div class=\"arena-padding-16\"></div><input type=\"text\" name=\"pseudo\"/></label>");
-                out.println("");
-                out.println("                <input type=\"submit\" value=\"Supprimer\"/>");
-                out.println("                </form>");
-                out.println("    </div>");
-                out.println("</div>");
-                out.println("</body>");
-                out.println("</html>");
 
+//on  renvoie l'utilisateur vers la page html
+                templateEngine.process("PASupprimerU", context, resp.getWriter());
 
-            } else {
+          /*  } else {
                 resp.sendRedirect("/Profil");
-            }
-        }
+            }*/
 
+        }
 
         @Override
         protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
