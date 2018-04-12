@@ -52,6 +52,8 @@ public class PAEnvoyerMailEve extends HttpServlet{
         List<Utilisateur> utilListe2 = (List<Utilisateur>) req.getSession().getAttribute("utilListe2");
         context.setVariable("utilList", utilListe2);
 
+        Evenement evenCh=(Evenement) req.getSession().getAttribute("evenCh");
+        context.setVariable("evenCh",evenCh);
 
         PrintWriter out = resp.getWriter();
 
@@ -73,6 +75,8 @@ public class PAEnvoyerMailEve extends HttpServlet{
 
         int id= Integer.parseInt(EvenementLibrary.getInstance().getId(nom_epi,dateEvenement));
 
+        Evenement evenCh=EvenementLibrary.getInstance().getEvenement(id);
+        req.getSession().setAttribute("evenCh",evenCh);
         try {
             List<Utilisateur> utilListe2= EvUtLibrary.getInstance().listeEvutMail(id);
             req.getSession().setAttribute("utilListe2",utilListe2);

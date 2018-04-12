@@ -33,12 +33,12 @@ public class EvenementDaoImpl implements EvenementDao {
 
 
     @Override
-    public Evenement getEvenement(String id){
+    public Evenement getEvenement(int id){
         //obtenir un evenement avec son nomE
         String query = "SELECT * FROM evenement WHERE id=?";
         try (Connection connection = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     return new Evenement(resultSet.getString("nomE"), resultSet.getString("descri"), resultSet.getDate("dateE").toLocalDate(), resultSet.getString("plateforme"),resultSet.getBoolean("interhei"),resultSet.getInt("payant"));

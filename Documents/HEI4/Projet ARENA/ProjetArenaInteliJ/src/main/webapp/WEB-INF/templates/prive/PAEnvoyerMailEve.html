@@ -57,6 +57,8 @@
             <span name="option" th:each="utilisateur : ${utilList}">
                 <span th:if="${utilisateur.pseudo!='Administrateur'}" th:text="${utilisateur.email+';'}" th:value="${utilisateur.email}"></span>
             </span>
+<div></div>
+            <span th:if="${evenCh!= null}" th:text="${'N oubliez pas que l evenement '+evenCh.nomE+' se deroule le '+evenCh.date}"></span>
         </div>
     </div>
 </div>

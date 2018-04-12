@@ -23,7 +23,7 @@ public class EvenementLibrary {
 
         private EvenementLibrary(){}
 
-        public Evenement getEvenement(String id){return evenementDao.getEvenement(id);}
+        public Evenement getEvenement(int id){return evenementDao.getEvenement(id);}
 
         public String getId(String nomE,  LocalDate dateE){
             if (nomE == null || "".equals(nomE)) {
