@@ -9,6 +9,14 @@ import java.util.List;
 
 public class CommentaireDaoImpl implements CommentaireDao {
 
+
+    public CommentaireDaoImpl(){
+        this.addCommentaire(new Commentaire(1,"pseudo1","comm1"));
+        this.addCommentaire(new Commentaire(2,"pseudo2","comm2"));
+
+    }
+
+
     @Override
     public List<Commentaire> listeCommentaires() {
         //lister les commentaires par pseudo

@@ -1,8 +1,10 @@
 package dao;
 
 import entities.EvUt;
+import entities.Evenement;
 import entities.Utilisateur;
 
+import javax.swing.tree.ExpandVetoException;
 import java.util.List;
 
 public interface EvUtDao {
@@ -19,6 +21,8 @@ public interface EvUtDao {
 
 
     public void deleteEvUt(String pseudo, int id);
+
+    public List<Evenement> listeEvUtEven(String pseudo);
 
     public List<Utilisateur> listeEvUtMail(int id);
 }

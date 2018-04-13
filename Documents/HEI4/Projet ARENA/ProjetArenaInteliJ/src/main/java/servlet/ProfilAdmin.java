@@ -18,7 +18,7 @@ public class ProfilAdmin extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String identifConnecte = (String) req.getSession().getAttribute("pseudo");
 
-        /*if ("Administateur".equals(identifConnecte)) {*/
+       /* if ("Administateur".equals(identifConnecte)) {*/
             PrintWriter out = resp.getWriter();
             out.println("        <!DOCTYPE html>");
             out.println("<html>");
@@ -91,7 +91,7 @@ public class ProfilAdmin extends HttpServlet {
             out.println("</html>");
 
 
-        /*}else{
+        /*else{
             resp.sendRedirect("/Profil");
         }*/
     }

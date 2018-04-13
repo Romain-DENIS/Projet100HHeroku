@@ -73,7 +73,7 @@ public class PAEnvoyerMailEve extends HttpServlet{
         DateTimeFormatter dateFormat2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate dateEvenement = LocalDate.parse(DateAsString, dateFormat2);
 
-        int id= Integer.parseInt(EvenementLibrary.getInstance().getId(nom_epi,dateEvenement));
+        int id= EvenementLibrary.getInstance().getId(nom_epi,dateEvenement);
 
         Evenement evenCh=EvenementLibrary.getInstance().getEvenement(id);
         req.getSession().setAttribute("evenCh",evenCh);

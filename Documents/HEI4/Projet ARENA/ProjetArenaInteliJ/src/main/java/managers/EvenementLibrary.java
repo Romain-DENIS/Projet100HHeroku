@@ -25,7 +25,7 @@ public class EvenementLibrary {
 
         public Evenement getEvenement(int id){return evenementDao.getEvenement(id);}
 
-        public String getId(String nomE,  LocalDate dateE){
+        public Integer getId(String nomE,  LocalDate dateE){
             if (nomE == null || "".equals(nomE)) {
 
                 throw new IllegalArgumentException("Le nom de l'evenement ne doit pas être vide.");

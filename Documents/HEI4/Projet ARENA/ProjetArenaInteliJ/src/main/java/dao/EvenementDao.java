@@ -12,7 +12,7 @@ public interface EvenementDao {
 
     public Evenement getEvenement(int id);
 
-    public String getId(String nomE, LocalDate dateE);
+    public Integer getId(String nomE, LocalDate dateE);
 
     public Evenement addEvenement(Evenement evenement);
 

@@ -35,6 +35,10 @@ public class UtilisateurLibrary {
 
     }
 
+    public String getPseudo(String pseudo){
+        return utilisateurDao.getMotDePasse(pseudo);
+    }
+
     public Utilisateur addUtilisateur(Utilisateur utilisateur){//utilisateurDao.addUtilisateur(utilisateur);
         return utilisateurDao.addUtilisateur(utilisateur);
     }

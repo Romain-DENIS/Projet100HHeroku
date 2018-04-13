@@ -5,11 +5,11 @@ INSERT INTO projetarena.utilisateur(`nom`,`prenom`,`pseudo`,`mot_de_passe`,`emai
 INSERT INTO projetarena.utilisateur(`nom`,`prenom`,`pseudo`,`mot_de_passe`,`email`,`classe`,`notif`) VALUES ('nom3','prenom3','pseudo3','mdp3','test3@exemple','H43',1);
 
 
-
+/*
 INSERT INTO projetarena.evenement(`nomE`,`descri`,`dateE`,`plateforme`,`interhei`,`payant`) VALUES ('even1','descri1','2018-02-19','ps4',1,1);
 INSERT INTO projetarena.evenement(`nomE`,`descri`,`dateE`,`plateforme`,`interhei`,`payant`) VALUES ('even2','descri2','2018-02-18','ordi',0,1);
 INSERT INTO projetarena.evenement(`nomE`,`descri`,`dateE`,`plateforme`,`interhei`,`payant`) VALUES ('even3','descri3','2018-02-17','xbox',1,0);
-
+*/
 
 INSERT INTO projetarena.evut(`id`,`pseudo`,`paye`) VALUES ('1','pseudo1',1);
 INSERT INTO projetarena.evut(`id`,`pseudo`,`paye`) VALUES ('2','pseudo2',0);

@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 @WebServlet("/Resultat")
@@ -25,19 +27,27 @@ public class Resultat  extends HttpServlet{
 //recuperation du pseudo pour verifier si un utilisateur est connecté
         String identifConnecte = (String) req.getSession().getAttribute("pseudo");
 
-            ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
-            templateResolver.setPrefix("/WEB-INF/templates/");
-            templateResolver.setSuffix(".html");
+        ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
+        templateResolver.setPrefix("/WEB-INF/templates/");
+        templateResolver.setSuffix(".html");
+        WebContext context = new WebContext(req, resp, req.getServletContext());
 
-            WebContext context = new WebContext(req, resp, req.getServletContext());
+        java.util.Date date = new java.util.Date();
+        LocalDate date2 = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int year=date2.getYear();
+        int month=date2.getMonthValue();
+        int day=date2.getDayOfMonth();
+        context.setVariable("date2",date2);
+        context.setVariable("day",day);
+        context.setVariable("month",month);
+        context.setVariable("year",year);
 
-            TemplateEngine templateEngine = new TemplateEngine();
-            templateEngine.setTemplateResolver(templateResolver);
+        TemplateEngine templateEngine = new TemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver);
 
         //ces variables seront utilisées pour afficher les evenements et les commentaires à l'aide de thymeleaf
-            List<Evenement> evenementList= EvenementLibrary.getInstance().listeEvenement();
-            context.setVariable("evenementList",evenementList);
-
+        List<entities.Evenement> evenementList= EvenementLibrary.getInstance().listeEvenement();
+        context.setVariable("evenementList",evenementList);
 
         List<entities.Commentaire> commentaireList= CommentaireLibrary.getInstance().listeCommentaire();
         context.setVariable("commentaireList",commentaireList);

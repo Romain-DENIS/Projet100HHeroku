@@ -1,10 +1,13 @@
 package entities;
 
+
+import managers.EvenementLibrary;
+
 import java.time.LocalDate;
 
 public class Evenement {
 
-    private static int id;
+    private Integer id;
     private String nomE;
     private String descri;
     private LocalDate dateE;
@@ -12,11 +15,11 @@ public class Evenement {
     private boolean interhei;
     private int payant;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -68,8 +71,8 @@ public class Evenement {
         this.payant = payant;
     }
 
-    public Evenement( String nomE, String descri, LocalDate dateE, String plateforme, boolean interhei, int payant) {
-
+    public Evenement(Integer id, String nomE, String descri, LocalDate dateE, String plateforme, boolean interhei, int payant) {
+        this.id=id;
         this.nomE = nomE;
         this.descri = descri;
         this.dateE = dateE;

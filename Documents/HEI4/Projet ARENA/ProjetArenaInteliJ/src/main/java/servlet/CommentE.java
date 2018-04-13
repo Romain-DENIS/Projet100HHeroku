@@ -83,7 +83,7 @@ public class CommentE extends HttpServlet{
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date = LocalDate.parse(releaseDateAsString, dateFormat);
 
-        int id = Integer.parseInt(EvenementLibrary.getInstance().getId(evenement,date));
+        int id =EvenementLibrary.getInstance().getId(evenement,date);
 
         entities.Commentaire commentaire1=new entities.Commentaire(id, pseudoC,commentaire);
         try{

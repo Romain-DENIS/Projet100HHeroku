@@ -61,7 +61,7 @@ public class PAAfficherInscris extends HttpServlet{
         DateTimeFormatter dateFormat2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate dateEvenement = LocalDate.parse(DateAsString, dateFormat2);
 
-        int id= Integer.parseInt(EvenementLibrary.getInstance().getId(nom_epi,dateEvenement));
+        int id=EvenementLibrary.getInstance().getId(nom_epi,dateEvenement);
 
         try {
             List<EvUt> liste= EvUtLibrary.getInstance().listeEvUt(id);

@@ -1,7 +1,7 @@
 package servlet;
 
 
-import entities.Commentaire;
+
 import managers.CommentaireLibrary;
 import managers.EvenementLibrary;
 import org.thymeleaf.TemplateEngine;
@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 @WebServlet("/Evenement")
@@ -28,8 +30,17 @@ public class Evenement  extends HttpServlet{
             ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
             templateResolver.setPrefix("/WEB-INF/templates/");
             templateResolver.setSuffix(".html");
+        WebContext context = new WebContext(req, resp, req.getServletContext());
 
-            WebContext context = new WebContext(req, resp, req.getServletContext());
+        java.util.Date date = new java.util.Date();
+        LocalDate date2 = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int year=date2.getYear();
+        int month=date2.getMonthValue();
+        int day=date2.getDayOfMonth();
+        context.setVariable("date2",date2);
+        context.setVariable("day",day);
+        context.setVariable("month",month);
+        context.setVariable("year",year);
 
             TemplateEngine templateEngine = new TemplateEngine();
             templateEngine.setTemplateResolver(templateResolver);
@@ -58,11 +69,11 @@ public class Evenement  extends HttpServlet{
                 out.println("<a href=\"Connexion\" class=\"arena-bar-item arena-button\">Connexion</a>");
             }else {
                 if ("Administrateur".equals(identifConnecte)) {
-                    out.println("<a href=\"ProfilAdmin\" class=\"arena-bar-item arena-button\">Profil Admin</a>");
-                } else {
-                    out.println("<a href=\"Profil\" class=\"arena-bar-item arena-button\">Profil</a>");
-                }
-            }
+            out.println("<a href=\"ProfilAdmin\" class=\"arena-bar-item arena-button\">Profil Admin</a>");
+        } else {
+            out.println("<a href=\"Profil\" class=\"arena-bar-item arena-button\">Profil</a>");
+        }
+    }
             out.println("                    </div>");
             out.println("  </div>");
             out.println("</div>");

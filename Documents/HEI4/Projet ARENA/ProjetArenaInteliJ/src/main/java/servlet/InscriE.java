@@ -79,7 +79,7 @@ public class InscriE extends HttpServlet{
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate dateE = LocalDate.parse(releaseDateAsString, dateFormat);
 
-        int id= Integer.parseInt(EvenementLibrary.getInstance().getId(nomE,dateE));
+        int id=EvenementLibrary.getInstance().getId(nomE,dateE);
 
 
 

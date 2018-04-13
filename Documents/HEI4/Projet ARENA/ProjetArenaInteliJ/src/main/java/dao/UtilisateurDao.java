@@ -14,6 +14,8 @@ public interface UtilisateurDao {
 
     public String getMotDePasse(String mot_de_passe);
 
+    public String getPseudo(String pseudo);
+
     public Utilisateur addUtilisateur(Utilisateur utilisateur);
 
     public void deleteUtilisateur(String pseudo);

@@ -103,7 +103,7 @@ public class PAAjouterE extends HttpServlet{
             Boolean interhei=Boolean.valueOf(req.getParameter("interhei"));
             int payant= Integer.valueOf(req.getParameter("payant"));
 
-            entities.Evenement evenement = new Evenement(nomE, descri, dateE, plateforme, interhei, payant);
+            entities.Evenement evenement = new Evenement(null,nomE, descri, dateE, plateforme, interhei, payant);
             try {
                 EvenementLibrary.getInstance().addEvenement(evenement);
             } catch (IllegalArgumentException e) {

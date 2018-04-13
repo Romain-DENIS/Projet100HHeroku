@@ -13,6 +13,13 @@ import java.util.List;
 
 public class EvUtDaoImpl implements EvUtDao{
 
+    public EvUtDaoImpl(){
+        this.addEvUt(new EvUt(1,"pseudo1",true));
+        this.addEvUt(new EvUt(2,"pseudo2",false));
+
+    }
+
+
 
         @Override
     public List<EvUt> listeEvUt(int id){
@@ -35,6 +42,26 @@ public class EvUtDaoImpl implements EvUtDao{
             e.printStackTrace();
         }
         return listOfEvUt;
+    }
+
+    @Override
+    public List<Evenement> listeEvUtEven(String pseudo){
+        //lister les utilisateurs participants a un evenement en fonction de l'id de l'evenement
+        String query="SELECT * FROM (evenement INNER JOIN evut ON evenement.id=evut.id) WHERE evut.pseudo=?";
+        List<Evenement> listOfEven= new ArrayList<>();
+        try(
+                Connection connection=DataSourceProvider.getDataSource().getConnection();
+                PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1,pseudo);
+            try(ResultSet resultSet = statement.executeQuery()) {
+                while(resultSet.next()) {
+                    listOfEven.add(new Evenement(resultSet.getInt("id"),resultSet.getString("nomE"), resultSet.getString("descri"), resultSet.getDate("dateE").toLocalDate(), resultSet.getString("plateforme"),resultSet.getBoolean("interhei"),resultSet.getInt("payant")));
+                }
+            }
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return listOfEven;
     }
 
     @Override

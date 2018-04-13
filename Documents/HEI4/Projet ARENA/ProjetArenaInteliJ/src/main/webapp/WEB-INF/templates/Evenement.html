@@ -17,51 +17,47 @@
 
 <!-- Page content -->
 <!-- Events Section -->
-<div class="arena-container arena-padding-32" id="evenements">
+<div class="arena-container arena-padding-16" id="evenements">
   <h3 class="arena-border-bottom arena-border-light-grey arena-padding-16">Evenements</h3>
   <a href="prive/CommentE" class="arena-left arena-bar-item arena-button arena-padding-24">Commenter un &eacutev&egravenement</a>
 <a href="prive/InscriE" class="arena-right arena-bar-item arena-button arena-padding-24">S'inscrire &agrave un &eacutev&egravenement</a>
 
 </div>
 
-<div class="arena-padding-32">
+<div class="arena-padding-16">
 <a href="Evenementexter" class="arena-left arena-bar-item arena-button arena-padding-24">Ev&egravenement exter-HEI</a>
 <a href="Evenement" class="arena-right arena-bar-item arena-button arena-padding-24 active">Ev&egravenement inter-HEI</a>
 </div>
 
-<div class="arena-row-padding" >
-  <div class="arena-col l3 m6 arena-margin-bottom" th:each="evenement : ${evenementList}">
-    <span th:if="${evenement.interhei == 1}">
-    <div class="arena-display-container">
+<div class="arena-padding-32 arena-row-padding" >
 
-      <a class=" arena-black arena-padding" th:text="${evenement.nomE}" th:value="${evenement.id}" onclick="RedirectionJavascript()"/>
+  <div class="arena-col l6 m6 arena-margin-bottom" th:each="evenement : ${evenementList}">
+ <div th:if="${evenement.date.year>year || evenement.date.monthValue>month && evenement.date.year==year || evenement.date.dayOfMonth>=day && evenement.date.monthValue==month && evenement.date.year==year}">
+    <div class=" arena-display-container" th:if="${evenement.interhei == 1}">
+
+
+      <a class=" arena-black arena-padding" th:text="${evenement.nomE}" />
       <div class=" arena-black arena-padding" th:text="${evenement.descri}"></div>
-      <div class=" arena-black arena-padding" th:text="${evenement.date}"></div>
-      <div class=" arena-black arena-padding" th:text="${evenement.payant}"></div>
-      <div class=" arena-black arena-padding" th:text="${evenement.interhei}"></div>
-      <div class=" arena-black arena-padding" th:text="${evenement.plateforme}"></div>
-      <div class=" arena-black arena-padding" th:text="${evenement.id}"></div>
-      <div class="arena-col l3 m6 arena-margin-bottom" th:each="commentaire : ${commentaireList}" >
-        <div th:if="${commentaire.id == evenement.id}">
-        <div class=" arena-black arena-padding" th:text="${commentaire.id}"></div>
-        <div class=" arena-black arena-padding" th:text="${commentaire.pseudo}"></div>
-        <div class=" arena-black arena-padding" th:text="${commentaire.commentaire}"></div>
+      <div class=" arena-black arena-padding" th:text="${'L evenement se deroule le : '+evenement.date}"></div>
+      <div class=" arena-black arena-padding" th:text="${'Le prix de l evenement est de : '+evenement.payant}"></div>
+      <div class=" arena-black arena-padding" th:text="${'Plateforme : '+evenement.plateforme}"></div>
+
+        <div class="arena-col l3 m6 arena-margin-bottom" th:each="commentaire : ${commentaireList}" >
+          <div class=" arena-display-container" th:if="${commentaire.id == evenement.id}">
+
+          <div class=" arena-black arena-padding arena-rightbar arena-border-white" th:text="${commentaire.pseudo}"></div>
+          <div class=" arena-black arena-padding arena-rightbar arena-border-white" th:text="${commentaire.commentaire}"></div>
+          </div>
+
         </div>
-      </div>
+
     </div>
-    </span>
+  </div>
+  </div>
 </div>
 
-</div>
 
-<script>
-    function RedirectionJavascript(){
-        var id = "";
-        '<%Session["id"] = "' + id + '"; %>';
-        alert('<%=Session["id"] %>');
-        document.location.href="Accueil";
-    }
-</script>
+
 
 </body>
 </html>

@@ -60,7 +60,7 @@ out.println("  <!-- Connexion Section -->");
 out.println("  <div class=\"arena-container arena-padding-32\" id=\"Connexion\">");
 out.println("                    <h3 class=\"arena-border-bottom arena-border-light-grey arena-padding-16\">Inscription</h3>");
 out.println("                    <p>Veuillez renseigner les différents champs afin de vous inscrire. Le pseudo et le mot de passe seront utilisés pour se connecter.</p>");
-out.println("    <form target=\"_blank\" method=\"post\">");
+out.println("    <form method=\"post\">");
 out.println("                    <input class=\"arena-input arena-section\" type=\"text\" placeholder=\"Nom\" required name=\"nom\" onKeyPress=\"return verifieChar(event,0);\">");
 out.println("                    <input class=\"arena-input arena-section\" type=\"text\" placeholder=\"Prenom\" required name=\"prenom\" onKeyPress=\"return verifieChar(event,0);\">");
 out.println("                    <input class=\"arena-input arena-section\" type=\"text\" placeholder=\"Email\" required name=\"email\" pattern=\".+@hei.yncrea.fr\" title=\"Merci de fournir uniquement une adresse hei.yncrea.fr\">");
@@ -145,12 +145,19 @@ out.println("</script>");
         String classe=req.getParameter("classe");
         Boolean notif= Boolean.valueOf(req.getParameter("notif"));
 
+        String pseudoV=UtilisateurLibrary.getInstance().getPseudo(pseudo);
         Utilisateur utilisateur= new Utilisateur(nom,prenom,pseudo,mot_de_passe,email,classe,notif);
-        try {
-            UtilisateurLibrary.getInstance().addUtilisateur(utilisateur);
-        } catch (IllegalArgumentException e) {
-            req.getSession().setAttribute("addQuoteErrorMessage", e.getMessage());resp.sendRedirect("/Erreur");
+        if(pseudo.equals(pseudoV)){
+            resp.sendRedirect("/Erreur");
+        }else
+        {
+            try {
+                UtilisateurLibrary.getInstance().addUtilisateur(utilisateur);
+            } catch (IllegalArgumentException e) {
+                req.getSession().setAttribute("addQuoteErrorMessage", e.getMessage());
+                resp.sendRedirect("/Erreur");
+            }
+            resp.sendRedirect("/Accueil");
         }
-        resp.sendRedirect("/Accueil");
     }
 }

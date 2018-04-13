@@ -10,6 +10,14 @@ import java.util.List;
 
 public class EvenementDaoImpl implements EvenementDao {
 
+    List<Evenement> evenementsT=new ArrayList<>();
+
+    public EvenementDaoImpl(){
+        this.addEvenement(new Evenement(null,"even1","descri1",LocalDate.of(2018,02,19),"ps4",true,1));
+        this.addEvenement(new Evenement(null,"even2","descri2",LocalDate.of(2018,02,18),"ordi",false,1));
+        this.addEvenement(new Evenement(null,"even3","descri3",LocalDate.of(2018,02,17),"xbox",true,0));
+    }
+
     @Override
     public List<Evenement> listeEvenement(){
         //lister les evenementpar id
@@ -21,7 +29,7 @@ public class EvenementDaoImpl implements EvenementDao {
                 ResultSet resultSet=statement.executeQuery(query)
         ){
             while(resultSet.next()) {
-                listOfEvenement.add(new Evenement(resultSet.getString("nomE"), resultSet.getString("descri"), resultSet.getDate("dateE").toLocalDate(), resultSet.getString("plateforme"),resultSet.getBoolean("interhei"),resultSet.getInt("payant")));
+                listOfEvenement.add(new Evenement(resultSet.getInt("id"),resultSet.getString("nomE"), resultSet.getString("descri"), resultSet.getDate("dateE").toLocalDate(), resultSet.getString("plateforme"),resultSet.getBoolean("interhei"),resultSet.getInt("payant")));
 
             }
         } catch(SQLException e){
@@ -41,7 +49,7 @@ public class EvenementDaoImpl implements EvenementDao {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    return new Evenement(resultSet.getString("nomE"), resultSet.getString("descri"), resultSet.getDate("dateE").toLocalDate(), resultSet.getString("plateforme"),resultSet.getBoolean("interhei"),resultSet.getInt("payant"));
+                    return new Evenement(resultSet.getInt("id"),resultSet.getString("nomE"), resultSet.getString("descri"), resultSet.getDate("dateE").toLocalDate(), resultSet.getString("plateforme"),resultSet.getBoolean("interhei"),resultSet.getInt("payant"));
                 }
             }
         } catch (SQLException e) {
@@ -51,7 +59,7 @@ public class EvenementDaoImpl implements EvenementDao {
     }
 
     @Override
-    public String getId(String nomE, LocalDate dateE){
+    public Integer getId(String nomE, LocalDate dateE){
         //obtenir l'id d'un evenement avec son nom et sa date(util pour les inscriptions)
         String query = "SELECT id FROM evenement WHERE nomE=? AND dateE=?";
 
@@ -66,7 +74,7 @@ public class EvenementDaoImpl implements EvenementDao {
 
                 if (resultSet.next()) {
 
-                    return new String(resultSet.getString("id"));
+                    return resultSet.getInt("id");
 
                 }
 
@@ -85,17 +93,23 @@ public class EvenementDaoImpl implements EvenementDao {
     @Override
     public Evenement addEvenement(Evenement evenement){
         //ajouter un evenement
-        String query ="INSERT INTO evenement(nomE,descri,dateE,plateforme,interhei,payant) VALUES(?,?,?,?,?,?)";
+
+        String query ="INSERT INTO evenement(id,nomE,descri,dateE,plateforme,interhei,payant) VALUES(?,?,?,?,?,?,?)";
         try {
+
+            evenementsT.add(evenement);
+            Integer id=evenementsT.size();
             Connection connection = DataSourceProvider.getDataSource().getConnection();
             PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setString(1,evenement.getNomE());
-            stmt.setString(2,evenement.getDescri());
-            stmt.setDate(3, Date.valueOf(evenement.getDate()));
-            stmt.setString(4,evenement.getPlateforme());
-            stmt.setBoolean(5,evenement.isInterhei());
-            stmt.setInt(6,evenement.isPayant());
+            stmt.setInt(1,id);
+            stmt.setString(2,evenement.getNomE());
+            stmt.setString(3,evenement.getDescri());
+            stmt.setDate(4, Date.valueOf(evenement.getDate()));
+            stmt.setString(5,evenement.getPlateforme());
+            stmt.setBoolean(6,evenement.isInterhei());
+            stmt.setInt(7,evenement.isPayant());
             stmt.executeUpdate();
+
             return evenement;
 
         } catch (SQLException e) {

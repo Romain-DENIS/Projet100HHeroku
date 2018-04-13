@@ -98,6 +98,39 @@ public class UtilisateurDaoImpl implements UtilisateurDao{
 
     }
 
+
+    @Override
+    public String getPseudo(String pseudo){
+        //obtenir le mot de passe d'un utilisateur avec son pseudo
+        String query = "SELECT pseudo FROM utilisateur WHERE pseudo=?";
+
+        try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, pseudo);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+
+                if (resultSet.next()) {
+
+                    return new String(resultSet.getString("pseudo"));
+
+                }
+
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return null;
+
+    }
+
+
     @Override
     public Utilisateur addUtilisateur(Utilisateur utilisateur){
         //ajouter un utilisateur
