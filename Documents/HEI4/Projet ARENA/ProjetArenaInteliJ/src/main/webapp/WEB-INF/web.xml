@@ -15,6 +15,89 @@
     </filter-mapping>
 
     <servlet>
+        <servlet-name>CommentE</servlet-name>
+        <servlet-class>servlet.CommentE</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CommentE</servlet-name>
+        <url-pattern>/prive/CommentE</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InscriE</servlet-name>
+        <servlet-class>servlet.InscriE</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InscriE</servlet-name>
+        <url-pattern>/prive/InscriE</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>PAAfficherInscris</servlet-name>
+        <servlet-class>servlet.PAAfficherInscris</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PAAfficherInscris</servlet-name>
+        <url-pattern>/prive/PAAfficherInscris</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PAAfficherPlateforme</servlet-name>
+        <servlet-class>servlet.PAAfficherPlateforme</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PAAfficherPlateforme</servlet-name>
+        <url-pattern>/prive/PAAfficherPlateforme</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>PAAfficherPrix</servlet-name>
+        <servlet-class>servlet.PAAfficherPrix</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PAAfficherPrix</servlet-name>
+        <url-pattern>/prive/PAAfficherPrix</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PAEnvoyerMail</servlet-name>
+        <servlet-class>servlet.PAEnvoyerMail</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PAEnvoyerMail</servlet-name>
+        <url-pattern>/prive/PAEnvoyerMail</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PAEnvoyerMailEve</servlet-name>
+        <servlet-class>servlet.PAEnvoyerMailEve</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PAEnvoyerMailEve</servlet-name>
+        <url-pattern>/prive/PAEnvoyerMailEve</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PASupprimerE</servlet-name>
+        <servlet-class>servlet.PASupprimerE</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PASupprimerE</servlet-name>
+        <url-pattern>/prive/PASupprimerE</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PASupprimerU</servlet-name>
+        <servlet-class>servlet.PASupprimerU</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PASupprimerU</servlet-name>
+        <url-pattern>/prive/PASupprimerU</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Profil</servlet-name>
         <servlet-class>servlet.Profil</servlet-class>
     </servlet>
@@ -30,24 +113,6 @@
     <servlet-mapping>
         <servlet-name>ProfilA</servlet-name>
         <url-pattern>/prive/ProfilAdmin</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>InscriE</servlet-name>
-        <servlet-class>servlet.InscriE</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>InscriE</servlet-name>
-        <url-pattern>/prive/InscriE</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>CommentE</servlet-name>
-        <servlet-class>servlet.CommentE</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CommentE</servlet-name>
-        <url-pattern>/prive/CommentE</url-pattern>
     </servlet-mapping>
 
     <filter>
