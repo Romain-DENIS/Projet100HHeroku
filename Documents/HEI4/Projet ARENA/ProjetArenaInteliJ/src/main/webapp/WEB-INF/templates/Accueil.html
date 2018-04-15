@@ -3,20 +3,21 @@
 <title>Accueil</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="..\CSS\Site.css">
+<link rel="stylesheet" href="../../CSS/Site.css">
+<script type="text/javascript" src="../../js/js.js"></script>
 <body>
 
 <!-- Navbar (sit on top) -->
 <div class="arena-top">
-  <div class="arena-bar arena-white arena-wide arena-padding arena-card">
-    <a href="Accueil.html" class="arena-bar-item arena-button active" ><b>ARENA</b> HEI</a>
+  <div class="arena-bar arena-white arena-wide arena-padding arena-card topnav" id="myTopnav">
+    <a href="Accueil" class="arena-bar-item arena-button active" ><b>ARENA</b> HEI</a>
     <!-- Float links to the right. Hide them on small screens -->
-    <div class="arena-right arena-hide-small">
-      <a href="Evenement" class="arena-bar-item arena-button">Ev&egravenements</a>
-      <a href="Resultat" class="arena-bar-item arena-button">R&eacutesultats</a>
-      <a href="Contact" class="arena-bar-item arena-button">Contact</a>
-      <a href="Connexion" class="arena-bar-item arena-button">Connexion</a>
-    </div>
+    <a href="Connexion" class="arena-right arena-bar-item arena-button">Connexion</a>
+    <a href="Contact" class="arena-right arena-bar-item arena-button">Contact</a>
+    <a href="Resultat" class="arena-right arena-bar-item arena-button">R&eacutesultats</a>
+    <a href="Evenement" class="arena-right arena-bar-item arena-button">Ev&egravenements</a>
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon arena-bar-item arena-button" onclick="myFunction()">&#9776;</a>
+
   </div>
 </div>
 
@@ -24,7 +25,7 @@
 <header class="arena-display-container arena-content arena-wide" style="max-width:1500px;" id="home">
   <img class="arena-image" src="../images/fondecran.jpg" alt="fondecran" width="100%" height="auto">
   <div class="arena-display-middle arena-margin-top arena-center">
-    <h1 class="arena-xxlarge arena-text-white"><img id="logoA" src="../images/ARENA.png"/ width="35%" height="auto"> </span> <span class="arena-hide-small arena-text-light-grey shadow"><b>ARENA</br> <span class="arena-hide-small arena-text-light-red shadow">HEI</span></b></h1>
+    <h1 class="arena-xxlarge arena-text-white"><img id="logoA" src="../images/ARENA.png" width="35%" height="auto">  <span class="arena-hide-small arena-text-light-grey shadow"><b>ARENA</br></span> <span class="arena-hide-small arena-text-light-red shadow">HEI</span></b></h1>
   </div>
 </header>
 
@@ -45,6 +46,7 @@
 <footer class="arena-center arena-black arena-padding-16">
   <p> Site web r&eacutealis&eacute pour l'association ARENA HEI</p>
 </footer>
+
 
 </body>
 </html>

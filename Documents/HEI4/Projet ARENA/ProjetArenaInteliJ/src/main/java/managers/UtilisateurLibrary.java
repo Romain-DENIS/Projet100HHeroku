@@ -36,7 +36,7 @@ public class UtilisateurLibrary {
     }
 
     public String getPseudo(String pseudo){
-        return utilisateurDao.getMotDePasse(pseudo);
+        return utilisateurDao.getPseudo(pseudo);
     }
 
     public Utilisateur addUtilisateur(Utilisateur utilisateur){//utilisateurDao.addUtilisateur(utilisateur);

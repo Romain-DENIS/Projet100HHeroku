@@ -40,30 +40,32 @@ public class Contact  extends HttpServlet{
             out.println("<meta charset=\"UTF-8\">");
             out.println("                    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
             out.println("                    <link rel=\"stylesheet\" href=\"../CSS/Site.css\">");
-            out.println("                    <body>");
-            out.println("");
-            out.println("<!-- Navbar -->");
-            out.println("<div class=\"arena-top\">");
-            out.println("                <div class=\"arena-bar arena-white arena-wide arena-padding arena-card topnav\" id=\"myTopnav\">");
-            out.println("                <a href=\"Accueil\" class=\"arena-bar-item arena-button\" ><b>ARENA</b> HEI</a>");
-            out.println("                <!-- Float links to the right. Hide them on small screens -->");
+        out.println("<script type=\"text/javascript\" src=\"../../js/js.js\"></script>");
 
-            out.println("                <a href=\"Evenement\" class=\"arena-bar-item arena-button\">Evènements</a>");
-            out.println("                <a href=\"Resultat\" class=\"arena-bar-item arena-button\">Résultats</a>");
-            out.println("                <a href=\"Contact\" class=\"arena-bar-item arena-button active\">Contact</a>");
-            out.println("<a href=\"javascript:void(0);\" style=\"font-size:15px;\" class=\"icon arena-bar-item arena-button\" onclick=\"myFunction()\">&#9776;</a>");
-            if(identifConnecte==null || "".equals(identifConnecte)) {
-                out.println("<a href=\"Connexion\" class=\"arena-bar-item arena-button\">Connexion</a>");
-            }else {
-                if ("Administrateur".equals(identifConnecte)) {
-                    out.println("<a href=\"ProfilAdmin\" class=\"arena-bar-item arena-button\">Profil Admin</a>");
-                } else {
-                    out.println("<a href=\"Profil\" class=\"arena-bar-item arena-button\">Profil</a>");
-                }
+        out.println("                    <body>");
+            out.println("");
+        out.println("<!-- Navbar -->");
+        out.println("<div class=\"arena-top\">");
+        out.println("                    <div class=\"arena-bar arena-white arena-wide arena-padding arena-card topnav\" id=\"myTopnav\">");
+        out.println("                    <a href=\"Accueil\" class=\"arena-bar-item arena-button\" ><b>ARENA</b> HEI</a>");
+        out.println("                    <!-- Float links to the right. Hide them on small screens -->");
+        //aide à savoir qui est connecte et dirige vers la page souhaitée
+        if(identifConnecte==null || "".equals(identifConnecte)) {
+            out.println("<a href=\"Connexion\" class=\"arena-right arena-bar-item arena-button\">Connexion</a>");
+        }else {
+            if ("Administrateur".equals(identifConnecte)) {
+                out.println("<a href=\"ProfilAdmin\" class=\"arena-right arena-bar-item arena-button\">Profil Admin</a>");
+            } else {
+                out.println("<a href=\"Profil\" class=\"arena-right arena-bar-item arena-button\">Profil</a>");
             }
-            out.println("                    </div>");
-            out.println("  </div>");
-            out.println("</div>");
+        }
+        out.println("                    <a href=\"Contact\" class=\"arena-right arena-bar-item arena-button active\">Contact</a>");
+        out.println("                    <a href=\"Resultat\" class=\"arena-right arena-bar-item arena-button\">Résultats</a>");
+        out.println("                    <a href=\"Evenement\" class=\"arena-right arena-bar-item arena-button \">Evènements</a>");
+        out.println("                     <a href=\"javascript:void(0);\" style=\"font-size:15px;\" class=\"icon arena-bar-item arena-button\" onclick=\"myFunction()\">&#9776;</a>");
+        out.println("  </div>");
+        out.println("</div>");
+
             out.println("");
             out.println("<!-- Header -->");
             out.println("<header class=\"arena-display-container arena-content arena-wide\" style=\"max-width:1500px;\" id=\"home\">");
@@ -85,34 +87,30 @@ public class Contact  extends HttpServlet{
             out.println("  </div>");
             out.println(" <div class=\"arena-row-padding arena-grayscale\">");
             out.println("    <div class=\"arena-col l3 m6 arena-margin-bottom\">");
-            out.println("      <img src=\"/arenaimages/team2.jpg\" alt=\"John\" style=\"width:100%\">");
+
             out.println("      <h3>Cassandra Lecointe</h3>");
             out.println("      <p class=\"arena-opacity\">Pr&eacutesidente</p>");
             out.println("");
             out.println("      <p><button class=\"arena-button arena-light-grey arena-block\"><a class=\"arena-button\" href=\"mailto:cassandra.lecointe@hei.yncrea.fr\">Contactez-nous</a></button></p>");
             out.println("    </div>");
             out.println("    <div class=\"arena-col l3 m6 arena-margin-bottom\">");
-            out.println("      <img src=\"/arenaimages/team1.jpg\" alt=\"Jane\" style=\"width:100%\">");
             out.println("      <h3>Cl&eacutement Morand</h3>");
             out.println("      <p class=\"arena-opacity\">Vice pr&eacutesident</p>");
             out.println("");
             out.println("      <p><button class=\"arena-button arena-light-grey arena-block\"><a class=\"arena-button\" href=\"mailto:clement.morand@hei.yncrea.fr\">Contactez-nous</a></button></p>");
             out.println("    </div>");
             out.println("    <div class=\"arena-col l3 m6 arena-margin-bottom\">");
-            out.println("      <img src=\"/arenaimages/team3.jpg\" alt=\"Mike\" style=\"width:100%\">");
             out.println("      <h3>F&eacutelix Mauduit</h3>");
             out.println("      <p class=\"arena-opacity\">Tr&eacutesorier</p>");
             out.println("");
             out.println("      <p><button class=\"arena-button arena-light-grey arena-block\"><a class=\"arena-button\" href=\"mailto:felix.mauduit@hei.yncrea.fr\">Contactez-nous</a></button></p>");
             out.println("    </div>");
             out.println("    <div class=\"arena-col l3 m6 arena-margin-bottom\">");
-            out.println("      <img src=\"/arenaimages/team4.jpg\" alt=\"Dan\" style=\"width:100%\">");
             out.println("      <h3>Julien Derouck</h3>");
             out.println("      <p class=\"arena-opacity\">Responsable communication</p>");
             out.println("");
             out.println("      <p><button class=\"arena-button arena-light-grey arena-block\"><a class=\"arena-button\" href=\"mailto:julien.derouck@hei.yncrea.fr\">Contactez-nous</a></button></p>");
             out.println("    </div><div class=\"arena-col l3 m6 arena-margin-bottom\">");
-            out.println("    <img src=\"/arenaimages/team4.jpg\" alt=\"Dan\" style=\"width:100%\">");
             out.println("    <h3>Corentin Deloffre</h3>");
             out.println("    <p class=\"arena-opacity\">Responsable HEARTHSTONE</p>");
             out.println("");
@@ -120,7 +118,6 @@ public class Contact  extends HttpServlet{
             out.println("  </div>");
             out.println("");
             out.println("    <div class=\"arena-col l3 m6 arena-margin-bottom\">");
-            out.println("      <img src=\"/arenaimages/team4.jpg\" alt=\"Dan\" style=\"width:100%\">");
             out.println("      <h3>Nicolas Humblot</h3>");
             out.println("      <p class=\"arena-opacity\">Responsable FIFA</p>");
             out.println("");

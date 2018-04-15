@@ -23,29 +23,32 @@ public class Erreur extends HttpServlet {
         out.println("<meta charset=\"UTF-8\">");
         out.println("                    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
         out.println("                    <link rel=\"stylesheet\" href=\"../CSS/Site.css\">");
+        out.println("<script type=\"text/javascript\" src=\"../../js/js.js\"></script>");
+
         out.println("                    <body>");
         out.println("");
         out.println("<!-- Navbar -->");
         out.println("<div class=\"arena-top\">");
-        out.println("                    <div class=\"arena-bar arena-white arena-wide arena-padding arena-card\">");
+        out.println("                    <div class=\"arena-bar arena-white arena-wide arena-padding arena-card topnav\" id=\"myTopnav\">");
         out.println("                    <a href=\"Accueil\" class=\"arena-bar-item arena-button\" ><b>ARENA</b> HEI</a>");
         out.println("                    <!-- Float links to the right. Hide them on small screens -->");
-        out.println("    <div class=\"arena-right arena-hide-small\">");
-        out.println("                    <a href=\"Evenement\" class=\"arena-bar-item arena-button\">Evènements</a>");
-        out.println("                    <a href=\"Resultat\" class=\"arena-bar-item arena-button\">Résultats</a>");
-        out.println("                    <a href=\"Contact\" class=\"arena-bar-item arena-button\">Contact</a>");
-        if (identifConnecte == null || "".equals(identifConnecte)) {
-            out.println("<a href=\"Connexion\" class=\"arena-bar-item arena-button\">Connexion</a>");
-        } else {
+        //aide à savoir qui est connecte et dirige vers la page souhaitée
+        if(identifConnecte==null || "".equals(identifConnecte)) {
+            out.println("<a href=\"Connexion\" class=\"arena-right arena-bar-item arena-button\">Connexion</a>");
+        }else {
             if ("Administrateur".equals(identifConnecte)) {
-                out.println("<a href=\"ProfilAdmin\" class=\"arena-bar-item arena-button\">Profil Admin</a>");
+                out.println("<a href=\"ProfilAdmin\" class=\"arena-right arena-bar-item arena-button\">Profil Admin</a>");
             } else {
-                out.println("<a href=\"Profil\" class=\"arena-bar-item arena-button\">Profil</a>");
+                out.println("<a href=\"Profil\" class=\"arena-right arena-bar-item arena-button\">Profil</a>");
             }
         }
-        out.println("                    </div>");
+        out.println("                    <a href=\"Contact\" class=\"arena-right arena-bar-item arena-button\">Contact</a>");
+        out.println("                    <a href=\"Resultat\" class=\"arena-right arena-bar-item arena-button\">Résultats</a>");
+        out.println("                    <a href=\"Evenement\" class=\"arena-right arena-bar-item arena-button \">Evènements</a>");
+        out.println("                     <a href=\"javascript:void(0);\" style=\"font-size:15px;\" class=\"icon arena-bar-item arena-button\" onclick=\"myFunction()\">&#9776;</a>");
         out.println("  </div>");
         out.println("</div>");
+
 
         out.println("<!-- Page content -->");
         out.println("  <!-- Connexion Section -->");
